@@ -5,3 +5,4 @@ extends Node2D
 
 func _on_button_pressed() -> void:
 	collision_shape_2d.disabled = false
+	Pieces.can_click = false

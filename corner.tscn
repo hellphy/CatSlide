@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwnetb7oe3e18"]
+[gd_scene load_steps=8 format=3 uid="uid://dwnetb7oe3e18"]
+
+[ext_resource type="Script" path="res://pieces.gd" id="1_642t3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wt2eq"]
 
@@ -23,8 +25,10 @@ size = Vector2(16, 8)
 size = Vector2(122, 122)
 
 [node name="Corner" type="Area2D"]
+script = ExtResource("1_642t3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.94902, 0.635294, 0.921569, 1)
 scale = Vector2(122, 122)
 texture = SubResource("CanvasTexture_wt2eq")
 

@@ -1,16 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdpggyq8do38i"]
+[gd_scene load_steps=8 format=3 uid="uid://bdpggyq8do38i"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_r47uc"]
 [ext_resource type="PackedScene" uid="uid://dwnetb7oe3e18" path="res://corner.tscn" id="2_ax5ln"]
+[ext_resource type="PackedScene" uid="uid://dkr0n2g0dhdvp" path="res://straight.tscn" id="2_r1slq"]
 [ext_resource type="Texture2D" uid="uid://wcu6tw6dcr8u" path="res://icon.svg" id="3_2adqr"]
+[ext_resource type="PackedScene" uid="uid://die147x68jjqa" path="res://cross.tscn" id="3_touqr"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_w5q6n"]
 specular_color = Color(0.831373, 0.0509804, 0.0509804, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5gsh"]
-size = Vector2(20.0317, 16.9626)
+size = Vector2(24.0018, 22.9814)
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(21, -48)
 script = ExtResource("1_r47uc")
 
 [node name="BG" type="Sprite2D" parent="."]
@@ -19,28 +22,50 @@ position = Vector2(570.5, 325)
 scale = Vector2(1177, 684)
 texture = SubResource("CanvasTexture_w5q6n")
 
-[node name="Corner" parent="." instance=ExtResource("2_ax5ln")]
-position = Vector2(395, 288)
-
-[node name="Cat" type="CharacterBody2D" parent="."]
-position = Vector2(460, 288)
-rotation = -1.57079
-
-[node name="Sprite2D" type="Sprite2D" parent="Cat"]
-scale = Vector2(0.196444, 0.196444)
-texture = ExtResource("3_2adqr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat"]
-unique_name_in_owner = true
-position = Vector2(0.000946045, 0.500061)
-shape = SubResource("RectangleShape2D_m5gsh")
-disabled = true
-
 [node name="Button" type="Button" parent="."]
 offset_left = 64.0
 offset_top = 114.0
 offset_right = 110.0
 offset_bottom = 145.0
 text = "Start"
+
+[node name="Cat" type="CharacterBody2D" parent="."]
+z_index = 10
+position = Vector2(656, 346)
+rotation = 3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="Cat"]
+scale = Vector2(0.324548, 0.324548)
+texture = ExtResource("3_2adqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat"]
+unique_name_in_owner = true
+position = Vector2(0.000961304, 1.50938)
+shape = SubResource("RectangleShape2D_m5gsh")
+disabled = true
+
+[node name="Corner" parent="." instance=ExtResource("2_ax5ln")]
+position = Vector2(657, 275)
+
+[node name="Corner2" parent="." instance=ExtResource("2_ax5ln")]
+position = Vector2(291, 153)
+
+[node name="Corner4" parent="." instance=ExtResource("2_ax5ln")]
+position = Vector2(291, 396)
+
+[node name="Corner5" parent="." instance=ExtResource("2_ax5ln")]
+position = Vector2(413, 396)
+
+[node name="Corner6" parent="." instance=ExtResource("2_ax5ln")]
+position = Vector2(413, 153)
+
+[node name="Corner3" parent="." instance=ExtResource("2_ax5ln")]
+position = Vector2(291, 275)
+
+[node name="Cross" parent="." instance=ExtResource("3_touqr")]
+position = Vector2(413, 275)
+
+[node name="Straight" parent="." instance=ExtResource("2_r1slq")]
+position = Vector2(535, 275)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://die147x68jjqa"]
+
+[ext_resource type="Script" path="res://cross_piece.gd" id="1_mmnj5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fhioa"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ijrdi"]
+specular_color = Color(0.866667, 0.137255, 0.137255, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8b44i"]
+size = Vector2(122, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuvv6"]
+size = Vector2(16, 10)
+
+[sub_resource type="Curve2D" id="Curve2D_yqe53"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -0.000419819, 63, 0, 0, 0, 0, 0, -61)
+}
+point_count = 2
+
+[node name="Cross" type="Area2D"]
+script = ExtResource("1_mmnj5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.52549, 0.929412, 0.403922, 1)
+scale = Vector2(122, 122)
+texture = SubResource("CanvasTexture_fhioa")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(0.0165398, -9.40862e-05)
+rotation = 1.5708
+scale = Vector2(17.478, 122)
+texture = SubResource("CanvasTexture_ijrdi")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(0.0165398, -9.40862e-05)
+rotation = 3.14159
+scale = Vector2(17.478, 122)
+texture = SubResource("CanvasTexture_ijrdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8b44i")
+
+[node name="FirstEntry" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstEntry"]
+shape = SubResource("RectangleShape2D_fuvv6")
+
+[node name="SecondEntry" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -57)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecondEntry"]
+shape = SubResource("RectangleShape2D_fuvv6")
+
+[node name="ThirdEntry" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(57, 0)
+rotation = 1.57079
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdEntry"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_fuvv6")
+
+[node name="FourthEntry" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-57, 0)
+rotation = 1.57079
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FourthEntry"]
+shape = SubResource("RectangleShape2D_fuvv6")
+
+[node name="FirstPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_yqe53")
+
+[node name="Path1" type="PathFollow2D" parent="FirstPath"]
+unique_name_in_owner = true
+position = Vector2(-0.000419819, 63)
+rotation = -1.57079
+
+[node name="SecondPath" type="Path2D" parent="."]
+rotation = 3.14159
+curve = SubResource("Curve2D_yqe53")
+
+[node name="Path2" type="PathFollow2D" parent="SecondPath"]
+unique_name_in_owner = true
+position = Vector2(-0.000419819, 63)
+rotation = -1.57079
+
+[node name="ThirdPath" type="Path2D" parent="."]
+rotation = 4.71238
+curve = SubResource("Curve2D_yqe53")
+
+[node name="Path3" type="PathFollow2D" parent="ThirdPath"]
+unique_name_in_owner = true
+position = Vector2(-0.000419819, 63)
+rotation = -1.57079
+
+[node name="FourthPath" type="Path2D" parent="."]
+rotation = 7.85397
+curve = SubResource("Curve2D_yqe53")
+
+[node name="Path4" type="PathFollow2D" parent="FourthPath"]
+unique_name_in_owner = true
+position = Vector2(-0.000419819, 63)
+rotation = -1.57079
+
+[connection signal="body_entered" from="FirstEntry" to="." method="_on_first_entry_body_entered"]
+[connection signal="body_entered" from="SecondEntry" to="." method="_on_second_entry_body_entered"]
+[connection signal="body_entered" from="ThirdEntry" to="." method="_on_third_entry_body_entered"]
+[connection signal="body_entered" from="FourthEntry" to="." method="_on_fourth_entry_body_entered"]
