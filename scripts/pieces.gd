@@ -14,7 +14,7 @@ static var can_click = true
 func path_anim(path: PathFollow2D,ratio: int) -> void:
 	#animates start and finish of a path 
 	var tween := create_tween()
-	tween.tween_property(path,"progress_ratio",ratio,0.8)
+	tween.tween_property(path,"progress_ratio",ratio,0.4)
 
 
 func add_player(body: Node2D, path: Node2D) -> void:
@@ -23,25 +23,19 @@ func add_player(body: Node2D, path: Node2D) -> void:
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
-	call_deferred("disable_areas")
+	call_deferred("disable_areas",second_entry)
 	call_deferred("add_player",body, path1)
 	path_anim(path1, 1)
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
-	call_deferred("disable_areas")
+	call_deferred("disable_areas",first_entry)
 	call_deferred("add_player",body, path2)
 	path_anim(path2,1)
 
 
-func disable_areas():
-	#if path has a player then both should be disabled 
-	if path1.get_child_count() != 0 or path2.get_child_count() != 0:
-		first_entry.monitoring = false
-		second_entry.monitoring = false
-	else:
-		first_entry.monitoring = true
-		second_entry.monitoring = true
+func disable_areas(entry):
+		entry.monitoring = false
 
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:

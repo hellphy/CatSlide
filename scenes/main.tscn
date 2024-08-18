@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdpggyq8do38i"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_r47uc"]
+[ext_resource type="PackedScene" uid="uid://dwnetb7oe3e18" path="res://scenes/corner.tscn" id="2_ax5ln"]
+[ext_resource type="PackedScene" uid="uid://dkr0n2g0dhdvp" path="res://scenes/straight.tscn" id="2_r1slq"]
+[ext_resource type="Texture2D" uid="uid://wcu6tw6dcr8u" path="res://icon.svg" id="3_2adqr"]
+[ext_resource type="PackedScene" uid="uid://die147x68jjqa" path="res://scenes/cross.tscn" id="3_touqr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_w5q6n"]
+specular_color = Color(0.831373, 0.0509804, 0.0509804, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1mh8"]
+radius = 24.0208
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(23, 14)
+script = ExtResource("1_r47uc")
+
+[node name="BG" type="Sprite2D" parent="."]
+self_modulate = Color(0.388235, 0.345098, 0.458824, 1)
+position = Vector2(570.5, 325)
+scale = Vector2(1177, 684)
+texture = SubResource("CanvasTexture_w5q6n")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 114.0
+offset_right = 110.0
+offset_bottom = 145.0
+text = "Start"
+
+[node name="Cat" type="CharacterBody2D" parent="."]
+z_index = 10
+position = Vector2(260, 156)
+rotation = 4.71238
+
+[node name="Sprite2D" type="Sprite2D" parent="Cat"]
+scale = Vector2(0.324548, 0.324548)
+texture = ExtResource("3_2adqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat"]
+unique_name_in_owner = true
+position = Vector2(1.13966e-05, -1)
+shape = SubResource("CircleShape2D_p1mh8")
+disabled = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
+offset_left = 270.0
+offset_top = 96.0
+offset_right = 1046.0
+offset_bottom = 596.0
+columns = 5
+
+[node name="CornerPiece" parent="GridContainer" instance=ExtResource("2_ax5ln")]
+layout_mode = 2
+
+[node name="CornerPiece8" parent="GridContainer" instance=ExtResource("2_ax5ln")]
+layout_mode = 2
+
+[node name="StraightPiece2" parent="GridContainer" instance=ExtResource("2_r1slq")]
+layout_mode = 2
+
+[node name="StraightPiece3" parent="GridContainer" instance=ExtResource("2_r1slq")]
+layout_mode = 2
+
+[node name="CornerPiece7" parent="GridContainer" instance=ExtResource("2_ax5ln")]
+layout_mode = 2
+
+[node name="StraightPiece5" parent="GridContainer" instance=ExtResource("2_r1slq")]
+layout_mode = 2
+
+[node name="StraightPiece6" parent="GridContainer" instance=ExtResource("2_r1slq")]
+layout_mode = 2
+
+[node name="CornerPiece5" parent="GridContainer" instance=ExtResource("2_ax5ln")]
+layout_mode = 2
+
+[node name="StraightPiece8" parent="GridContainer" instance=ExtResource("2_r1slq")]
+layout_mode = 2
+
+[node name="CornerPiece6" parent="GridContainer" instance=ExtResource("2_ax5ln")]
+layout_mode = 2
+
+[node name="CornerPiece2" parent="GridContainer" instance=ExtResource("2_ax5ln")]
+layout_mode = 2
+
+[node name="CrossPiece" parent="GridContainer" instance=ExtResource("3_touqr")]
+layout_mode = 2
+
+[node name="CornerPiece3" parent="GridContainer" instance=ExtResource("2_ax5ln")]
+layout_mode = 2
+
+[node name="cross" type="Button" parent="."]
+offset_left = 67.0
+offset_top = 161.0
+offset_right = 187.0
+offset_bottom = 192.0
+text = "add Crossroad"
+
+[node name="straight" type="Button" parent="."]
+offset_left = 67.0
+offset_top = 202.0
+offset_right = 170.0
+offset_bottom = 233.0
+text = "add Straight"
+
+[node name="curve" type="Button" parent="."]
+offset_left = 67.0
+offset_top = 244.0
+offset_right = 154.0
+offset_bottom = 275.0
+text = "add Curve"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="cross" to="." method="_on_cross_pressed"]
+[connection signal="pressed" from="straight" to="." method="_on_straight_pressed"]
+[connection signal="pressed" from="curve" to="." method="_on_curve_pressed"]

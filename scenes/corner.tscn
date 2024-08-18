@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwnetb7oe3e18"]
 
-[ext_resource type="Script" path="res://pieces.gd" id="1_642t3"]
+[ext_resource type="Script" path="res://scripts/pieces.gd" id="1_642t3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_wt2eq"]
 
@@ -19,70 +19,80 @@ _data = {
 point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdcbj"]
-size = Vector2(16, 8)
+size = Vector2(25, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8u0q"]
 size = Vector2(122, 122)
 
-[node name="Corner" type="Area2D"]
+[node name="CornerPiece" type="Control"]
+custom_minimum_size = Vector2(121, 121)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(61, 61)
+mouse_filter = 2
+
+[node name="Corner" type="Area2D" parent="."]
+position = Vector2(61, 61)
 script = ExtResource("1_642t3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Corner"]
 self_modulate = Color(0.94902, 0.635294, 0.921569, 1)
 scale = Vector2(122, 122)
 texture = SubResource("CanvasTexture_wt2eq")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
+[node name="Sprite2D3" type="Sprite2D" parent="Corner"]
 self_modulate = Color(0, 0, 0, 1)
 position = Vector2(26.1673, 5.79303e-07)
 rotation = 1.5708
 scale = Vector2(17.484, 69.7392)
 texture = SubResource("CanvasTexture_5uxln")
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
+[node name="Sprite2D4" type="Sprite2D" parent="Corner"]
 self_modulate = Color(0, 0, 0, 1)
 position = Vector2(1.97299e-06, 26.2492)
 rotation = -3.14159
 scale = Vector2(17.484, 69.5017)
 texture = SubResource("CanvasTexture_5uxln")
 
-[node name="FirstPath" type="Path2D" parent="."]
+[node name="FirstPath" type="Path2D" parent="Corner"]
 position = Vector2(-394, -289.146)
 scale = Vector2(1, 1.00037)
 curve = SubResource("Curve2D_ogtxc")
 
-[node name="Path1" type="PathFollow2D" parent="FirstPath"]
+[node name="Path1" type="PathFollow2D" parent="Corner/FirstPath"]
 unique_name_in_owner = true
 position = Vector2(394, 349.615)
 rotation = -1.5708
 loop = false
 
-[node name="SecondPath" type="Path2D" parent="."]
+[node name="SecondPath" type="Path2D" parent="Corner"]
 curve = SubResource("Curve2D_tw7xd")
 
-[node name="Path2" type="PathFollow2D" parent="SecondPath"]
+[node name="Path2" type="PathFollow2D" parent="Corner/SecondPath"]
 unique_name_in_owner = true
 position = Vector2(61, 0)
 rotation = 3.14159
 loop = false
 
-[node name="FirstEntry" type="Area2D" parent="."]
+[node name="FirstEntry" type="Area2D" parent="Corner"]
 unique_name_in_owner = true
 
-[node name="FirstEntryCollision" type="CollisionShape2D" parent="FirstEntry"]
-position = Vector2(0, 57)
+[node name="FirstEntryCollision" type="CollisionShape2D" parent="Corner/FirstEntry"]
+position = Vector2(0, 60)
 shape = SubResource("RectangleShape2D_pdcbj")
 
-[node name="SecondEntry" type="Area2D" parent="."]
+[node name="SecondEntry" type="Area2D" parent="Corner"]
 unique_name_in_owner = true
 
-[node name="SecondEntryCollision" type="CollisionShape2D" parent="SecondEntry"]
-position = Vector2(57, 0)
+[node name="SecondEntryCollision" type="CollisionShape2D" parent="Corner/SecondEntry"]
+position = Vector2(57.5, 0.499996)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_pdcbj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corner"]
 shape = SubResource("RectangleShape2D_o8u0q")
 
-[connection signal="body_entered" from="FirstEntry" to="." method="_on_first_entry_body_entered"]
-[connection signal="body_entered" from="SecondEntry" to="." method="_on_second_entry_body_entered"]
+[connection signal="body_entered" from="Corner/FirstEntry" to="Corner" method="_on_first_entry_body_entered"]
+[connection signal="body_entered" from="Corner/SecondEntry" to="Corner" method="_on_second_entry_body_entered"]
