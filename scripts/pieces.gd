@@ -45,7 +45,7 @@ func _on_second_entry_body_entered(body: Node2D) -> void:
 
 
 func disable_areas(entry):
-		entry.monitoring = false
+	entry.monitoring = false
 
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:

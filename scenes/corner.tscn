@@ -5,24 +5,24 @@
 
 [sub_resource type="Curve2D" id="Curve2D_ogtxc"]
 _data = {
-"points": PackedVector2Array(0.0965355, 5.16256, -0.0965355, -5.16256, 396, 354.015, -22.2436, 17.8146, 22.2436, -17.8146, 415, 304.034, -5, 0.374861, 5, -0.374861, 460, 290.039)
+"points": PackedVector2Array(0.0965355, 5.16256, -0.0965355, -5.16256, 398.471, 355.803, -22.2436, 17.8146, 22.2436, -17.8146, 416.471, 304.822, -5, 0.374861, 5, -0.374861, 458.471, 290.827)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_tw7xd"]
 _data = {
-"points": PackedVector2Array(5.5625, -0.0625, -5.5625, 0.0625, 64, 1, 21.0237, -18.354, -21.0237, 18.354, 19, 16, 0.496063, -7.54016, -0.496063, 7.54016, 1, 65)
+"points": PackedVector2Array(5.5625, -0.0625, -5.5625, 0.0625, 63.4715, 1.78909, 21.0237, -18.354, -21.0237, 18.354, 20.4715, 16.7891, 0.496063, -7.54016, -0.496063, 7.54016, 3.47147, 66.7891)
 }
 point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdcbj"]
-size = Vector2(25, 18)
+size = Vector2(36, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8u0q"]
 size = Vector2(121, 122)
 
-[node name="CornerPiece" type="Control"]
-custom_minimum_size = Vector2(122, 122)
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(121, 121)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 117.0
@@ -30,62 +30,63 @@ offset_bottom = 117.0
 pivot_offset = Vector2(61, 61)
 mouse_filter = 2
 
-[node name="Corner" type="Area2D" parent="."]
-position = Vector2(59, 58)
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(60, 61)
 script = ExtResource("1_642t3")
 
-[node name="CornerPiece" type="Sprite2D" parent="Corner"]
+[node name="CornerPiece" type="Sprite2D" parent="Area2D"]
 position = Vector2(1, 0)
 scale = Vector2(0.56, 0.56)
 texture = ExtResource("2_husm6")
 
-[node name="FirstPath" type="Path2D" parent="Corner"]
-position = Vector2(-394, -289.146)
+[node name="FirstPath" type="Path2D" parent="Area2D"]
+position = Vector2(-396.471, -289.935)
 scale = Vector2(1, 1.00037)
 curve = SubResource("Curve2D_ogtxc")
 
-[node name="Path1" type="PathFollow2D" parent="Corner/FirstPath"]
+[node name="Path1" type="PathFollow2D" parent="Area2D/FirstPath"]
 unique_name_in_owner = true
-position = Vector2(396, 354.015)
+position = Vector2(398.471, 355.803)
 rotation = -1.58949
 loop = false
 
-[node name="SecondPath" type="Path2D" parent="Corner"]
-position = Vector2(1, 0)
+[node name="SecondPath" type="Path2D" parent="Area2D"]
+position = Vector2(-1.47147, -0.789085)
 curve = SubResource("Curve2D_tw7xd")
 
-[node name="Path2" type="PathFollow2D" parent="Corner/SecondPath"]
+[node name="Path2" type="PathFollow2D" parent="Area2D/SecondPath"]
 unique_name_in_owner = true
-position = Vector2(64, 1)
+position = Vector2(63.4715, 1.78909)
 rotation = 3.13036
 loop = false
 
-[node name="FirstEntry" type="Area2D" parent="Corner"]
+[node name="FirstEntry" type="Area2D" parent="Area2D"]
 unique_name_in_owner = true
 
-[node name="FirstEntryCollision" type="CollisionShape2D" parent="Corner/FirstEntry"]
+[node name="FirstEntryCollision" type="CollisionShape2D" parent="Area2D/FirstEntry"]
 position = Vector2(2, 56)
 shape = SubResource("RectangleShape2D_pdcbj")
 
-[node name="SecondEntry" type="Area2D" parent="Corner"]
+[node name="SecondEntry" type="Area2D" parent="Area2D"]
 unique_name_in_owner = true
 
-[node name="SecondEntryCollision" type="CollisionShape2D" parent="Corner/SecondEntry"]
+[node name="SecondEntryCollision" type="CollisionShape2D" parent="Area2D/SecondEntry"]
 position = Vector2(56, 1)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_pdcbj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Corner"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_o8u0q")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Corner"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Area2D"]
 position = Vector2(-59, -58)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Corner/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D/StaticBody2D"]
 polygon = PackedVector2Array(20, 119, 13, 117, 7, 113, 2, 107, -1, 100, -1, 17, 1.53391, 10.4118, 5, 5, 10.5783, 0.457851, 17, -3, 103, -3, 109, 0, 114, 4, 118.03, 11.0595, 121, 17, 115, 17, 99, 6, 20, 6, 7, 17, 6, 98, 20, 113)
 
-[connection signal="body_entered" from="Corner/FirstEntry" to="Corner" method="_on_first_entry_body_entered"]
-[connection signal="body_entered" from="Corner/SecondEntry" to="Corner" method="_on_second_entry_body_entered"]
+[connection signal="body_entered" from="Area2D/FirstEntry" to="Area2D" method="_on_first_entry_body_entered"]
+[connection signal="body_entered" from="Area2D/SecondEntry" to="Area2D" method="_on_second_entry_body_entered"]

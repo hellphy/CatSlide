@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdpggyq8do38i"]
+[gd_scene load_steps=5 format=3 uid="uid://bdpggyq8do38i"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_r47uc"]
-[ext_resource type="PackedScene" uid="uid://dwnetb7oe3e18" path="res://scenes/corner.tscn" id="2_ax5ln"]
-[ext_resource type="PackedScene" uid="uid://ccb0jyd2kudcr" path="res://scenes/cat.tscn" id="3_cjaer"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_oaf16"]
 
@@ -15,8 +13,6 @@ size = Vector2(679, 28)
 [node name="Node2D" type="Node2D"]
 position = Vector2(23, 14)
 script = ExtResource("1_r47uc")
-
-[node name="Cat" parent="." instance=ExtResource("3_cjaer")]
 
 [node name="respawn_point" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -49,48 +45,6 @@ offset_top = 96.0
 offset_right = 1046.0
 offset_bottom = 596.0
 columns = 5
-
-[node name="CornerPiece" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece2" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece3" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece4" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece5" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece6" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece7" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece8" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece9" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece10" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece11" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece12" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece13" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
-
-[node name="CornerPiece14" parent="GridContainer" instance=ExtResource("2_ax5ln")]
-layout_mode = 2
 
 [node name="cross" type="Button" parent="."]
 offset_left = 67.0
@@ -136,9 +90,12 @@ position = Vector2(-224, 59)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_ysm4g")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(563, 305)
+rotation = 1.37299
+zoom = Vector2(1.2, 1.2)
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="cross" to="." method="_on_cross_pressed"]
 [connection signal="pressed" from="straight" to="." method="_on_straight_pressed"]
 [connection signal="pressed" from="curve" to="." method="_on_curve_pressed"]
-
-[editable path="Cat"]

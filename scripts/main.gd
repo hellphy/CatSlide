@@ -1,17 +1,20 @@
 extends Node2D
 
 
-@onready var cat_collider = get_node("root/Node2D/Cat/CatCollider")
-@onready var cat_area = get_node("root/Node2D/Cat/CatArea")
-@onready var cat: CharacterBody2D = $Cat
 @onready var respawn_point: Node2D = %respawn_point
 
+
+func _ready() -> void:
+	Globals.connect("restart", _restart_level)
+	_restart_level()
+
+
 func _on_button_pressed() -> void:
-	print(cat.position)
-	cat_collider.disabled = false
+	Cat.collider_switch = false
+	Cat.area_switch = true
 	Pieces.can_click = false
 	Cross_Piece.can_click = false
-	cat_area.monitoring = true
+
 
 
 func _on_cross_pressed() -> void:
@@ -30,16 +33,16 @@ func _on_curve_pressed() -> void:
 
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _restart_level() -> void:
 	call_deferred("restart")
 
 
 func restart() -> void:
-	cat.queue_free()
+	get_tree().call_group("Cat", "queue_free")
 	var new_cat := preload("res://scenes/cat.tscn").instantiate()
 	add_child(new_cat)
 	new_cat.transform = respawn_point.transform
-	cat_collider.disabled = true
+	Cat.collider_switch = true
 	Pieces.can_click = true
 	Cross_Piece.can_click = true
 	Globals.emit_signal("restart_areas")
