@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccb0jyd2kudcr"]
+
+[ext_resource type="Texture2D" uid="uid://wcu6tw6dcr8u" path="res://icon.svg" id="2_gulou"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1mh8"]
+radius = 24.0208
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tkxf"]
+radius = 18.0278
+
+[node name="Cat" type="CharacterBody2D"]
+z_index = 10
+position = Vector2(260, 156)
+rotation = -1.57081
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.324548, 0.324548)
+texture = ExtResource("2_gulou")
+
+[node name="CatCollider" type="CollisionShape2D" parent="."]
+position = Vector2(1.13966e-05, -1)
+shape = SubResource("CircleShape2D_p1mh8")
+disabled = true
+
+[node name="CatArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatArea"]
+position = Vector2(-6.81679e-05, 5)
+shape = SubResource("CircleShape2D_6tkxf")

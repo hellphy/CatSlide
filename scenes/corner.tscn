@@ -81,7 +81,7 @@ shape = SubResource("RectangleShape2D_o8u0q")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Corner"]
 position = Vector2(-59, -58)
-collision_layer = 4
+collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Corner/StaticBody2D"]

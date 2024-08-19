@@ -2,18 +2,32 @@
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_r47uc"]
 [ext_resource type="PackedScene" uid="uid://dwnetb7oe3e18" path="res://scenes/corner.tscn" id="2_ax5ln"]
-[ext_resource type="Script" path="res://scripts/cat.gd" id="2_nislw"]
-[ext_resource type="Texture2D" uid="uid://wcu6tw6dcr8u" path="res://icon.svg" id="3_2adqr"]
+[ext_resource type="PackedScene" uid="uid://ccb0jyd2kudcr" path="res://scenes/cat.tscn" id="3_cjaer"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_oaf16"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_w5q6n"]
 specular_color = Color(0.831373, 0.0509804, 0.0509804, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p1mh8"]
-radius = 24.0208
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysm4g"]
+size = Vector2(679, 28)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(23, 14)
 script = ExtResource("1_r47uc")
+
+[node name="Cat" parent="." instance=ExtResource("3_cjaer")]
+
+[node name="respawn_point" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 20
+position = Vector2(259, 156)
+rotation = -1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="respawn_point"]
+position = Vector2(5.61873e-06, 5.72205e-06)
+scale = Vector2(12, 12)
+texture = SubResource("CanvasTexture_oaf16")
 
 [node name="BG" type="Sprite2D" parent="."]
 self_modulate = Color(0.388235, 0.345098, 0.458824, 1)
@@ -99,30 +113,32 @@ offset_right = 154.0
 offset_bottom = 275.0
 text = "add Curve"
 
-[node name="Cat" type="CharacterBody2D" parent="."]
-unique_name_in_owner = true
-z_index = 10
-position = Vector2(260, 156)
-rotation = -1.57081
-script = ExtResource("2_nislw")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(479, 497)
+collision_layer = 2
+collision_mask = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Cat"]
-scale = Vector2(0.324548, 0.324548)
-texture = ExtResource("3_2adqr")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(130.5, -16)
+shape = SubResource("RectangleShape2D_ysm4g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat"]
-unique_name_in_owner = true
-position = Vector2(1.13966e-05, -1)
-shape = SubResource("CircleShape2D_p1mh8")
-disabled = true
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(430, -325)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_ysm4g")
 
-[node name="RayCast2D" type="RayCast2D" parent="Cat"]
-unique_name_in_owner = true
-enabled = false
-target_position = Vector2(-0.000213623, 23)
-collision_mask = 4
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(117, -418)
+shape = SubResource("RectangleShape2D_ysm4g")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-224, 59)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_ysm4g")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="cross" to="." method="_on_cross_pressed"]
 [connection signal="pressed" from="straight" to="." method="_on_straight_pressed"]
 [connection signal="pressed" from="curve" to="." method="_on_curve_pressed"]
+
+[editable path="Cat"]

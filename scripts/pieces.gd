@@ -33,14 +33,12 @@ func add_player(body: Node2D, path: Node2D) -> void:
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
-	print("first entered")
 	call_deferred("disable_areas",second_entry)
 	call_deferred("add_player",body, path1)
 	path_anim(path1, 1)
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
-	print("second entered")
 	call_deferred("disable_areas",first_entry)
 	call_deferred("add_player",body, path2)
 	path_anim(path2,1)
