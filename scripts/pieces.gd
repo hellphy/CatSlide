@@ -11,6 +11,16 @@ class_name Pieces extends Area2D
 
 static var can_click = true
 
+func _ready() -> void:
+	Globals.connect("restart_areas", _restart_areas)
+
+
+func _restart_areas() -> void:
+	first_entry.monitoring = true
+	second_entry.monitoring = true
+	path1.progress_ratio = 0
+	path2.progress_ratio = 0
+
 func path_anim(path: PathFollow2D,ratio: int) -> void:
 	#animates start and finish of a path 
 	var tween := create_tween()
@@ -23,12 +33,14 @@ func add_player(body: Node2D, path: Node2D) -> void:
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
+	print("first entered")
 	call_deferred("disable_areas",second_entry)
 	call_deferred("add_player",body, path1)
 	path_anim(path1, 1)
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
+	print("second entered")
 	call_deferred("disable_areas",first_entry)
 	call_deferred("add_player",body, path2)
 	path_anim(path2,1)
@@ -56,5 +68,4 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 
 func reset_click():
 	can_click = true
-
 

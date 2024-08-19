@@ -11,7 +11,7 @@ specular_color = Color(0.866667, 0.137255, 0.137255, 1)
 size = Vector2(122, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g87ot"]
-size = Vector2(24.5, 29)
+size = Vector2(18, 29)
 
 [sub_resource type="Curve2D" id="Curve2D_2isi7"]
 _data = {
@@ -26,20 +26,20 @@ _data = {
 point_count = 2
 
 [node name="StraightPiece" type="Control"]
-custom_minimum_size = Vector2(121, 121)
+custom_minimum_size = Vector2(118, 118)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 121.0
-offset_bottom = 121.0
+offset_right = 118.0
+offset_bottom = 122.0
 pivot_offset = Vector2(61, 61)
 mouse_filter = 2
 
 [node name="Straight" type="Area2D" parent="."]
-position = Vector2(61, 61)
+position = Vector2(59, 61)
 script = ExtResource("1_vhd1v")
 
 [node name="Sprite2D" type="Sprite2D" parent="Straight"]
-self_modulate = Color(0.65098, 0.501961, 0.980392, 1)
+self_modulate = Color(0.45098, 0.45098, 0.45098, 1)
 scale = Vector2(122, 122)
 texture = SubResource("CanvasTexture_fhioa")
 
@@ -57,14 +57,14 @@ shape = SubResource("RectangleShape2D_8b44i")
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Straight/FirstEntry"]
-position = Vector2(-61, 0)
+position = Vector2(-52, 0)
 shape = SubResource("RectangleShape2D_g87ot")
 
 [node name="SecondEntry" type="Area2D" parent="Straight"]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Straight/SecondEntry"]
-position = Vector2(58, -1)
+position = Vector2(52, 0)
 shape = SubResource("RectangleShape2D_g87ot")
 
 [node name="FirstPath" type="Path2D" parent="Straight"]
