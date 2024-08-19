@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func _restart_areas() -> void:
+	print("restarted")
 	first_entry.monitoring = true
 	second_entry.monitoring = true
 	path1.progress_ratio = 0

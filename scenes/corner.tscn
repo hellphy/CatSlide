@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://scripts/pieces.gd" id="1_642t3"]
 [ext_resource type="Texture2D" uid="uid://d013j8wtpd0jp" path="res://cornerPiece.png" id="2_husm6"]
 
-[sub_resource type="Curve2D" id="Curve2D_ogtxc"]
+[sub_resource type="Curve2D" id="Curve2D_wtj3m"]
 _data = {
-"points": PackedVector2Array(0.0965355, 5.16256, -0.0965355, -5.16256, 398.471, 355.803, -22.2436, 17.8146, 22.2436, -17.8146, 416.471, 304.822, -5, 0.374861, 5, -0.374861, 458.471, 290.827)
+"points": PackedVector2Array(-0.140308, 10.5231, 0.140308, -10.5231, 1, 65, -16.1354, 19.6431, 16.1354, -19.6431, 14, 17, -3.50769, 0.140308, 3.50769, -0.140308, 67, 0)
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_tw7xd"]
+[sub_resource type="Curve2D" id="Curve2D_gvxo4"]
 _data = {
-"points": PackedVector2Array(5.5625, -0.0625, -5.5625, 0.0625, 63.4715, 1.78909, 21.0237, -18.354, -21.0237, 18.354, 20.4715, 16.7891, 0.496063, -7.54016, -0.496063, 7.54016, 3.47147, 66.7891)
+"points": PackedVector2Array(5.24407, -0.187288, -5.24407, 0.187288, 127, 61, 17.4178, -14.6085, -17.4178, 14.6085, 78, 73, 0.561865, -11.2373, -0.561865, 11.2373, 61, 126)
 }
 point_count = 3
 
@@ -25,8 +25,10 @@ size = Vector2(121, 122)
 custom_minimum_size = Vector2(121, 121)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 117.0
-offset_bottom = 117.0
+offset_left = -61.0
+offset_top = -61.0
+offset_right = 60.0
+offset_bottom = 60.0
 pivot_offset = Vector2(61, 61)
 mouse_filter = 2
 
@@ -40,24 +42,24 @@ scale = Vector2(0.56, 0.56)
 texture = ExtResource("2_husm6")
 
 [node name="FirstPath" type="Path2D" parent="Area2D"]
-position = Vector2(-396.471, -289.935)
-scale = Vector2(1, 1.00037)
-curve = SubResource("Curve2D_ogtxc")
+curve = SubResource("Curve2D_wtj3m")
 
 [node name="Path1" type="PathFollow2D" parent="Area2D/FirstPath"]
 unique_name_in_owner = true
-position = Vector2(398.471, 355.803)
-rotation = -1.58949
+position = Vector2(1, 65)
+rotation = -1.55746
+scale = Vector2(1.00037, 1)
+skew = -1.38283e-05
 loop = false
 
 [node name="SecondPath" type="Path2D" parent="Area2D"]
-position = Vector2(-1.47147, -0.789085)
-curve = SubResource("Curve2D_tw7xd")
+position = Vector2(-60, -61)
+curve = SubResource("Curve2D_gvxo4")
 
 [node name="Path2" type="PathFollow2D" parent="Area2D/SecondPath"]
 unique_name_in_owner = true
-position = Vector2(63.4715, 1.78909)
-rotation = 3.13036
+position = Vector2(127, 61)
+rotation = 3.10589
 loop = false
 
 [node name="FirstEntry" type="Area2D" parent="Area2D"]
