@@ -8,15 +8,18 @@ class_name Pieces extends Area2D
 @onready var first_entry: Area2D = %FirstEntry
 @onready var second_entry: Area2D = %SecondEntry
 
+var tween: Tween
 
 static var can_click = true
 
+
 func _ready() -> void:
 	Globals.connect("restart_areas", _restart_areas)
-
+	
 
 func _restart_areas() -> void:
-	print("restarted")
+	if tween != null:
+		tween.kill()
 	first_entry.monitoring = true
 	second_entry.monitoring = true
 	path1.progress_ratio = 0
@@ -24,7 +27,9 @@ func _restart_areas() -> void:
 
 func path_anim(path: PathFollow2D,ratio: int) -> void:
 	#animates start and finish of a path 
-	var tween := create_tween()
+	if tween != null:
+		tween.kill()
+	tween = create_tween()
 	tween.tween_property(path,"progress_ratio",ratio,0.4)
 
 
@@ -34,12 +39,14 @@ func add_player(body: Node2D, path: Node2D) -> void:
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
+	path1.progress_ratio = 0
 	call_deferred("disable_areas",second_entry)
 	call_deferred("add_player",body, path1)
 	path_anim(path1, 1)
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
+	path2.progress_ratio = 0
 	call_deferred("disable_areas",first_entry)
 	call_deferred("add_player",body, path2)
 	path_anim(path2,1)

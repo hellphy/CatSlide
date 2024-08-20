@@ -5,13 +5,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_wtj3m"]
 _data = {
-"points": PackedVector2Array(-0.140308, 10.5231, 0.140308, -10.5231, 1, 65, -16.1354, 19.6431, 16.1354, -19.6431, 14, 17, -3.50769, 0.140308, 3.50769, -0.140308, 67, 0)
+"points": PackedVector2Array(-0.140308, 10.5231, 0.140308, -10.5231, 1, 61, -16.1354, 19.6431, 16.1354, -19.6431, 14, 17, -3.50769, 0.140308, 3.50769, -0.140308, 62, 0)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_gvxo4"]
 _data = {
-"points": PackedVector2Array(5.24407, -0.187288, -5.24407, 0.187288, 127, 61, 17.4178, -14.6085, -17.4178, 14.6085, 78, 73, 0.561865, -11.2373, -0.561865, 11.2373, 61, 126)
+"points": PackedVector2Array(5.24407, -0.187288, -5.24407, 0.187288, 122, 61, 17.4178, -14.6085, -17.4178, 14.6085, 78, 73, 0.561865, -11.2373, -0.561865, 11.2373, 61, 122)
 }
 point_count = 3
 
@@ -22,13 +22,19 @@ size = Vector2(36, 18)
 size = Vector2(121, 122)
 
 [node name="Control" type="Control"]
-custom_minimum_size = Vector2(121, 121)
+custom_minimum_size = Vector2(116, 116)
 layout_mode = 3
-anchors_preset = 0
-offset_left = -61.0
-offset_top = -61.0
-offset_right = 60.0
-offset_bottom = 60.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -636.0
+offset_top = -385.0
+offset_right = -515.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(61, 61)
 mouse_filter = 2
 
@@ -46,7 +52,7 @@ curve = SubResource("Curve2D_wtj3m")
 
 [node name="Path1" type="PathFollow2D" parent="Area2D/FirstPath"]
 unique_name_in_owner = true
-position = Vector2(1, 65)
+position = Vector2(1, 61)
 rotation = -1.55746
 scale = Vector2(1.00037, 1)
 skew = -1.38283e-05
@@ -58,7 +64,7 @@ curve = SubResource("Curve2D_gvxo4")
 
 [node name="Path2" type="PathFollow2D" parent="Area2D/SecondPath"]
 unique_name_in_owner = true
-position = Vector2(127, 61)
+position = Vector2(122, 61)
 rotation = 3.10589
 loop = false
 
@@ -66,19 +72,18 @@ loop = false
 unique_name_in_owner = true
 
 [node name="FirstEntryCollision" type="CollisionShape2D" parent="Area2D/FirstEntry"]
-position = Vector2(2, 56)
+position = Vector2(2, 52)
 shape = SubResource("RectangleShape2D_pdcbj")
 
 [node name="SecondEntry" type="Area2D" parent="Area2D"]
 unique_name_in_owner = true
 
-[node name="SecondEntryCollision" type="CollisionShape2D" parent="Area2D/SecondEntry"]
-position = Vector2(56, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/SecondEntry"]
+position = Vector2(53, 1)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_pdcbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_o8u0q")
 

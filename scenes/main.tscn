@@ -77,7 +77,7 @@ position = Vector2(130.5, -16)
 shape = SubResource("RectangleShape2D_ysm4g")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(430, -325)
+position = Vector2(423, -325)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_ysm4g")
 

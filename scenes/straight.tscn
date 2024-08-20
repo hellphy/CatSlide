@@ -1,54 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkr0n2g0dhdvp"]
+[gd_scene load_steps=7 format=3 uid="uid://dkr0n2g0dhdvp"]
 
 [ext_resource type="Script" path="res://scripts/pieces.gd" id="1_vhd1v"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_fhioa"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_ijrdi"]
-specular_color = Color(0.866667, 0.137255, 0.137255, 1)
+[ext_resource type="Texture2D" uid="uid://dq0qt7dunyrbf" path="res://straightPiece.png" id="2_0w1dh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b44i"]
 size = Vector2(122, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g87ot"]
-size = Vector2(18, 29)
+size = Vector2(22, 33)
 
 [sub_resource type="Curve2D" id="Curve2D_2isi7"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -61, 0, 0, 0, 0, 0, 61, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -61, 0, 0, 0, 0, 0, -29, -4, 0, 0, 0, 0, 32, 3, 0, 0, 0, 0, 61, 0)
 }
-point_count = 2
+point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_uhur6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 61, 0, 0, 0, 0, 0, -61, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 61, 0, 20.2622, 0.264866, -20.2622, -0.264866, 33, 3, 0, 0, 0, 0, -31, -4, 0, 0, 0, 0, -61, 0)
 }
-point_count = 2
+point_count = 4
 
 [node name="StraightPiece" type="Control"]
-custom_minimum_size = Vector2(118, 118)
+custom_minimum_size = Vector2(116, 116)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 118.0
-offset_bottom = 122.0
+offset_left = -61.0
+offset_top = -61.0
+offset_right = 61.0
+offset_bottom = 61.0
 pivot_offset = Vector2(61, 61)
 mouse_filter = 2
 
 [node name="Straight" type="Area2D" parent="."]
-position = Vector2(59, 61)
+position = Vector2(61, 61)
 script = ExtResource("1_vhd1v")
 
-[node name="Sprite2D" type="Sprite2D" parent="Straight"]
-self_modulate = Color(0.45098, 0.45098, 0.45098, 1)
-scale = Vector2(122, 122)
-texture = SubResource("CanvasTexture_fhioa")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Straight"]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(0.0165398, -9.40862e-05)
-rotation = 1.5708
-scale = Vector2(17.478, 122)
-texture = SubResource("CanvasTexture_ijrdi")
+[node name="StraightPiece" type="Sprite2D" parent="Straight"]
+rotation = 1.57079
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("2_0w1dh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Straight"]
 shape = SubResource("RectangleShape2D_8b44i")
@@ -57,14 +48,14 @@ shape = SubResource("RectangleShape2D_8b44i")
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Straight/FirstEntry"]
-position = Vector2(-52, 0)
+position = Vector2(-50, 0)
 shape = SubResource("RectangleShape2D_g87ot")
 
 [node name="SecondEntry" type="Area2D" parent="Straight"]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Straight/SecondEntry"]
-position = Vector2(52, 0)
+position = Vector2(49, 0)
 shape = SubResource("RectangleShape2D_g87ot")
 
 [node name="FirstPath" type="Path2D" parent="Straight"]
@@ -73,6 +64,7 @@ curve = SubResource("Curve2D_2isi7")
 [node name="Path1" type="PathFollow2D" parent="Straight/FirstPath"]
 unique_name_in_owner = true
 position = Vector2(-61, 0)
+rotation = -0.124355
 
 [node name="SecondPath" type="Path2D" parent="Straight"]
 curve = SubResource("Curve2D_uhur6")
@@ -80,7 +72,20 @@ curve = SubResource("Curve2D_uhur6")
 [node name="Path2" type="PathFollow2D" parent="Straight/SecondPath"]
 unique_name_in_owner = true
 position = Vector2(61, 0)
+rotation = 3.03486
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Straight"]
+position = Vector2(-61, -61)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Straight/StaticBody2D"]
+polygon = PackedVector2Array(3, 13, 11, 5, 23, 0, 99, 0, 110, 4, 119, 13)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Straight/StaticBody2D"]
+position = Vector2(122, 122)
 rotation = 3.14159
+polygon = PackedVector2Array(3, 13, 11, 5, 23, 0, 99, 0, 110, 4, 119, 13)
 
 [connection signal="body_entered" from="Straight/FirstEntry" to="Straight" method="_on_first_entry_body_entered"]
 [connection signal="body_entered" from="Straight/SecondEntry" to="Straight" method="_on_second_entry_body_entered"]

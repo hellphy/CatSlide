@@ -20,7 +20,7 @@ _data = {
 point_count = 2
 
 [node name="CrossPiece" type="Control"]
-custom_minimum_size = Vector2(118, 118)
+custom_minimum_size = Vector2(116, 116)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -60.0
