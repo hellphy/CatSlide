@@ -7,9 +7,11 @@ extends Node2D
 func _ready() -> void:
 	Globals.connect("restart", _restart_level)
 	_restart_level()
+	print(%GridContainer.get_child_count())
 
 
 func _on_button_pressed() -> void:
+	get_tree().call_group("Cat", "play_aniamtion")
 	Cat.collider_switch = false
 	Cat.area_switch = true
 	Pieces.can_click = false
@@ -46,3 +48,12 @@ func restart() -> void:
 	Pieces.can_click = true
 	Cross_Piece.can_click = true
 	Globals.emit_signal("restart_areas")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Cat"):
+		print("exit")
+		print(Globals.tile_counter," ", %GridContainer.get_child_count())
+		if Globals.tile_counter == %GridContainer.get_child_count():
+			print(Globals.tile_counter," ", %GridContainer.get_child_count())
+			%VictoryScreen.visible = true

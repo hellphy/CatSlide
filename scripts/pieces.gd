@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 
 func _restart_areas() -> void:
+	%Shadow.visible = true
 	if tween != null:
 		tween.kill()
 	first_entry.monitoring = true
@@ -39,6 +40,10 @@ func add_player(body: Node2D, path: Node2D) -> void:
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
+	print("entered1")
+	Globals.tile_counter += 1 
+	%Shadow.visible = false
+	body.global_position = path1.global_position
 	path1.progress_ratio = 0
 	call_deferred("disable_areas",second_entry)
 	call_deferred("add_player",body, path1)
@@ -46,6 +51,10 @@ func _on_first_entry_body_entered(body: Node2D) -> void:
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
+	print("entered2")
+	Globals.tile_counter += 1 
+	%Shadow.visible = false
+	body.global_position = path2.global_position
 	path2.progress_ratio = 0
 	call_deferred("disable_areas",first_entry)
 	call_deferred("add_player",body, path2)
@@ -74,4 +83,3 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 
 func reset_click():
 	can_click = true
-

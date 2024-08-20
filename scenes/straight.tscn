@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkr0n2g0dhdvp"]
+[gd_scene load_steps=8 format=3 uid="uid://dkr0n2g0dhdvp"]
 
 [ext_resource type="Script" path="res://scripts/pieces.gd" id="1_vhd1v"]
 [ext_resource type="Texture2D" uid="uid://dq0qt7dunyrbf" path="res://straightPiece.png" id="2_0w1dh"]
+[ext_resource type="Texture2D" uid="uid://d013j8wtpd0jp" path="res://cornerPiece.png" id="3_4msap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b44i"]
 size = Vector2(122, 122)
@@ -86,6 +87,12 @@ polygon = PackedVector2Array(3, 13, 11, 5, 23, 0, 99, 0, 110, 4, 119, 13)
 position = Vector2(122, 122)
 rotation = 3.14159
 polygon = PackedVector2Array(3, 13, 11, 5, 23, 0, 99, 0, 110, 4, 119, 13)
+
+[node name="Shadow" type="Sprite2D" parent="Straight"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 0.541176)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("3_4msap")
 
 [connection signal="body_entered" from="Straight/FirstEntry" to="Straight" method="_on_first_entry_body_entered"]
 [connection signal="body_entered" from="Straight/SecondEntry" to="Straight" method="_on_second_entry_body_entered"]

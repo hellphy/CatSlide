@@ -5,13 +5,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_wtj3m"]
 _data = {
-"points": PackedVector2Array(-0.140308, 10.5231, 0.140308, -10.5231, 1, 61, -16.1354, 19.6431, 16.1354, -19.6431, 14, 17, -3.50769, 0.140308, 3.50769, -0.140308, 62, 0)
+"points": PackedVector2Array(-0.140308, 10.5231, 0.140308, -10.5231, 0, 65, -16.1354, 19.6431, 16.1354, -19.6431, 14, 17, -3.50769, 0.140308, 3.50769, -0.140308, 66, 0)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_gvxo4"]
 _data = {
-"points": PackedVector2Array(5.24407, -0.187288, -5.24407, 0.187288, 122, 61, 17.4178, -14.6085, -17.4178, 14.6085, 78, 73, 0.561865, -11.2373, -0.561865, 11.2373, 61, 122)
+"points": PackedVector2Array(5.24407, -0.187288, -5.24407, 0.187288, 125, 61, 17.4178, -14.6085, -17.4178, 14.6085, 78, 73, 0.561865, -11.2373, -0.561865, 11.2373, 60, 126)
 }
 point_count = 3
 
@@ -52,7 +52,7 @@ curve = SubResource("Curve2D_wtj3m")
 
 [node name="Path1" type="PathFollow2D" parent="Area2D/FirstPath"]
 unique_name_in_owner = true
-position = Vector2(1, 61)
+position = Vector2(0, 65)
 rotation = -1.55746
 scale = Vector2(1.00037, 1)
 skew = -1.38283e-05
@@ -64,7 +64,7 @@ curve = SubResource("Curve2D_gvxo4")
 
 [node name="Path2" type="PathFollow2D" parent="Area2D/SecondPath"]
 unique_name_in_owner = true
-position = Vector2(122, 61)
+position = Vector2(125, 61)
 rotation = 3.10589
 loop = false
 
@@ -84,8 +84,16 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_pdcbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_o8u0q")
+
+[node name="Shadow" type="Sprite2D" parent="Area2D"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 0.541176)
+position = Vector2(1, 0)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("2_husm6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Area2D"]
 position = Vector2(-59, -58)
@@ -95,5 +103,6 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D/StaticBody2D"]
 polygon = PackedVector2Array(20, 119, 13, 117, 7, 113, 2, 107, -1, 100, -1, 17, 1.53391, 10.4118, 5, 5, 10.5783, 0.457851, 17, -3, 103, -3, 109, 0, 114, 4, 118.03, 11.0595, 121, 17, 115, 17, 99, 6, 20, 6, 7, 17, 6, 98, 20, 113)
 
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D/FirstEntry" to="Area2D" method="_on_first_entry_body_entered"]
 [connection signal="body_entered" from="Area2D/SecondEntry" to="Area2D" method="_on_second_entry_body_entered"]

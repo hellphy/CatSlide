@@ -1,7 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccb0jyd2kudcr"]
+[gd_scene load_steps=10 format=3 uid="uid://ccb0jyd2kudcr"]
 
 [ext_resource type="Script" path="res://scripts/cat.gd" id="1_d7mgv"]
-[ext_resource type="Texture2D" uid="uid://wcu6tw6dcr8u" path="res://icon.svg" id="2_gulou"]
+[ext_resource type="Texture2D" uid="uid://bngv6480ktqdk" path="res://CatSpriteSheet.png" id="3_ckjfy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nsea"]
+atlas = ExtResource("3_ckjfy")
+region = Rect2(0, 0, 451, 497)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w60fc"]
+atlas = ExtResource("3_ckjfy")
+region = Rect2(451, 0, 451, 497)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_161g2"]
+atlas = ExtResource("3_ckjfy")
+region = Rect2(902, 0, 451, 497)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnmvi"]
+atlas = ExtResource("3_ckjfy")
+region = Rect2(1353, 0, 451, 497)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3vp5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nsea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w60fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_161g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnmvi")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 13.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1mh8"]
 radius = 17.0
@@ -14,9 +50,14 @@ z_index = 10
 rotation = -1.57081
 script = ExtResource("1_d7mgv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.324548, 0.324548)
-texture = ExtResource("2_gulou")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+rotation = -3.14159
+scale = Vector2(0.155425, 0.155425)
+sprite_frames = SubResource("SpriteFrames_y3vp5")
+animation = &"new_animation"
+frame_progress = 0.428155
 
 [node name="CatCollider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
