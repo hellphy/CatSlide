@@ -12,6 +12,7 @@ class_name Cross_Piece extends Area2D
 @onready var third_entry: Area2D = %ThirdEntry
 @onready var fourth_entry: Area2D = %FourthEntry
 
+var tween: Tween
 
 static var can_click = true
 
@@ -20,6 +21,9 @@ func _ready() -> void:
 
 
 func _restart_areas() -> void:
+	%Shadow.visible = true
+	if tween != null:
+		tween.kill()
 	first_entry.monitoring = true
 	second_entry.monitoring = true
 	third_entry.monitoring = true
@@ -32,7 +36,9 @@ func _restart_areas() -> void:
 
 func path_anim(path: PathFollow2D,ratio: int) -> void:
 	#animates start and finish of a path 
-	var tween := create_tween()
+	if tween != null:
+		tween.kill()
+	tween = create_tween()
 	tween.tween_property(path,"progress_ratio",ratio,0.4)
 
 
@@ -66,24 +72,46 @@ func reset_click():
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
+	if %shadow.visble == true:
+		Globals.tile_counter += 1
+	%Shadow.visible = false
+	body.global_position = path1.global_position
+	Globals.tile_counter += 1 
+	call_deferred("disable_areas",first_entry)
 	call_deferred("disable_areas",second_entry)
 	call_deferred("add_player",body, path1)
 	path_anim(path1, 1)
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
+	if %Shadow.visble == true:
+		Globals.tile_counter += 1
+	%Shadow.visible = false
+	body.global_position = path2.global_position
+	Globals.tile_counter += 1 
+	call_deferred("disable_areas",second_entry)
 	call_deferred("disable_areas",first_entry)
 	call_deferred("add_player",body, path2)
 	path_anim(path2, 1)
 
 
 func _on_third_entry_body_entered(body: Node2D) -> void:
+	if %Shadow.visble == true:
+		Globals.tile_counter += 1
+	%Shadow.visible = false
+	body.global_position = path3.global_position
+	call_deferred("disable_areas",third_entry)
 	call_deferred("disable_areas",fourth_entry)
 	call_deferred("add_player",body, path3)
 	path_anim(path3, 1)
 
 
 func _on_fourth_entry_body_entered(body: Node2D) -> void:
+	if %Shadow.visible == true:
+		Globals.tile_counter += 1
+	%Shadow.visible = false
+	body.global_position = path4.global_position
+	call_deferred("disable_areas",fourth_entry)
 	call_deferred("disable_areas",third_entry)
 	call_deferred("add_player",body, path4)
 	path_anim(path4, 1)

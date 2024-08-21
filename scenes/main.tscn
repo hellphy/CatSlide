@@ -1,165 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdpggyq8do38i"]
+[gd_scene load_steps=5 format=3 uid="uid://bdpggyq8do38i"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_r47uc"]
-[ext_resource type="PackedScene" uid="uid://dkr0n2g0dhdvp" path="res://scenes/straight.tscn" id="2_2n7re"]
-[ext_resource type="PackedScene" uid="uid://dwnetb7oe3e18" path="res://scenes/corner.tscn" id="2_aha4m"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_oaf16"]
+[ext_resource type="PackedScene" uid="uid://cm3f1xr8ql5ft" path="res://Levels/level_1.tscn" id="2_ukjwh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_w5q6n"]
 specular_color = Color(0.831373, 0.0509804, 0.0509804, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysm4g"]
-size = Vector2(843.25, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1a1"]
-size = Vector2(91, 124)
 
 [sub_resource type="LabelSettings" id="LabelSettings_t86ro"]
 font_size = 189
 outline_size = 25
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D"]
-position = Vector2(23, 14)
+[node name="LevelManager" type="Node2D"]
 script = ExtResource("1_r47uc")
-
-[node name="respawn_point" type="Node2D" parent="."]
-unique_name_in_owner = true
-z_index = 20
-position = Vector2(214, 76)
-rotation = -1.5708
-
-[node name="Sprite2D" type="Sprite2D" parent="respawn_point"]
-position = Vector2(5.61873e-06, 5.72205e-06)
-scale = Vector2(12, 12)
-texture = SubResource("CanvasTexture_oaf16")
 
 [node name="BG" type="Sprite2D" parent="."]
 self_modulate = Color(0.388235, 0.345098, 0.458824, 1)
-position = Vector2(559, 301)
-scale = Vector2(1177, 684)
+position = Vector2(579, 324)
+scale = Vector2(1152, 648)
 texture = SubResource("CanvasTexture_w5q6n")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 64.0
-offset_top = 114.0
-offset_right = 110.0
-offset_bottom = 145.0
-text = "Start"
+[node name="Level1" parent="." instance=ExtResource("2_ukjwh")]
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="VictoryScreen" type="Label" parent="."]
 unique_name_in_owner = true
-offset_left = 221.0
-offset_top = 7.0
-offset_right = 1070.0
-offset_bottom = 603.0
-columns = 7
-
-[node name="StraightPiece" parent="GridContainer" instance=ExtResource("2_2n7re")]
-layout_mode = 2
-
-[node name="Control2" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control3" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control4" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control5" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control6" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control7" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control8" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control9" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control10" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control11" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control12" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control13" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control14" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control15" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control16" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control17" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control18" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control19" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control20" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control21" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control22" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control23" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control24" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control25" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control26" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control27" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control28" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control29" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control30" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control31" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control32" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control33" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control34" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
-
-[node name="Control35" parent="GridContainer" instance=ExtResource("2_aha4m")]
-layout_mode = 2
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 322.0
+offset_top = 155.0
+offset_right = 1010.0
+offset_bottom = 414.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Victory!"
+label_settings = SubResource("LabelSettings_t86ro")
 
 [node name="cross" type="Button" parent="."]
 offset_left = 67.0
@@ -182,55 +60,24 @@ offset_right = 154.0
 offset_bottom = 275.0
 text = "add Curve"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(479, 497)
-collision_layer = 2
-collision_mask = 2
+[node name="Button" type="Button" parent="."]
+offset_left = 31.0
+offset_top = 315.0
+offset_right = 168.0
+offset_bottom = 357.0
+text = "Start"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(161.75, 125)
-shape = SubResource("RectangleShape2D_ysm4g")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(600, -461)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_ysm4g")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(164, -503)
-shape = SubResource("RectangleShape2D_ysm4g")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-269, 59)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_ysm4g")
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(1039, 496)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(49.5, 53)
-shape = SubResource("RectangleShape2D_7p1a1")
-
-[node name="VictoryScreen" type="Label" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 322.0
-offset_top = 155.0
-offset_right = 1010.0
-offset_bottom = 414.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Victory!"
-label_settings = SubResource("LabelSettings_t86ro")
+offset_left = 26.0
+offset_top = 459.0
+offset_right = 181.0
+offset_bottom = 531.0
+theme_override_font_sizes/normal_font_size = 56
+text = "30/30"
+scroll_active = false
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="cross" to="." method="_on_cross_pressed"]
 [connection signal="pressed" from="straight" to="." method="_on_straight_pressed"]
 [connection signal="pressed" from="curve" to="." method="_on_curve_pressed"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

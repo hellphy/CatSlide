@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://die147x68jjqa"]
+[gd_scene load_steps=6 format=3 uid="uid://die147x68jjqa"]
 
 [ext_resource type="Script" path="res://scripts/cross_piece.gd" id="1_mmnj5"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_fhioa"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_ijrdi"]
-specular_color = Color(0.866667, 0.137255, 0.137255, 1)
+[ext_resource type="Texture2D" uid="uid://cq5cmtbdennwy" path="res://CrossPiece.png" id="2_mem0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b44i"]
 size = Vector2(122, 122)
@@ -23,49 +19,21 @@ point_count = 2
 custom_minimum_size = Vector2(116, 116)
 layout_mode = 3
 anchors_preset = 0
-offset_left = -60.0
+offset_left = -61.0
 offset_top = -61.0
-offset_right = 58.0
-offset_bottom = 61.0
+offset_right = 60.0
+offset_bottom = 60.0
 pivot_offset = Vector2(61, 61)
 mouse_filter = 2
 
 [node name="Cross" type="Area2D" parent="."]
-position = Vector2(59, 61)
+position = Vector2(60, 61)
 script = ExtResource("1_mmnj5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Cross"]
-self_modulate = Color(0.45098, 0.45098, 0.45098, 1)
-scale = Vector2(122, 122)
-texture = SubResource("CanvasTexture_fhioa")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Cross"]
-self_modulate = Color(1, 0, 0, 1)
-position = Vector2(0.0165398, -9.40862e-05)
-rotation = 1.5708
-scale = Vector2(17.478, 122)
-texture = SubResource("CanvasTexture_ijrdi")
-
-[node name="Sprite2D6" type="Sprite2D" parent="Cross"]
-self_modulate = Color(0.729412, 1, 0, 1)
-position = Vector2(-34.9164, -0.000220543)
-rotation = 1.5708
-scale = Vector2(17.478, 52.1341)
-texture = SubResource("CanvasTexture_ijrdi")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Cross"]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(0.0165398, -9.40862e-05)
-rotation = 3.14159
-scale = Vector2(17.478, 122)
-texture = SubResource("CanvasTexture_ijrdi")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Cross"]
-self_modulate = Color(0.14902, 0.0431373, 0.94902, 1)
-position = Vector2(0.0166287, 35.0815)
-rotation = 3.14159
-scale = Vector2(17.478, 51.8368)
-texture = SubResource("CanvasTexture_ijrdi")
+[node name="CrossPiece" type="Sprite2D" parent="Cross"]
+position = Vector2(0, -0.244)
+scale = Vector2(1, 0.996)
+texture = ExtResource("2_mem0q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cross"]
 shape = SubResource("RectangleShape2D_8b44i")
@@ -138,6 +106,12 @@ curve = SubResource("Curve2D_yqe53")
 unique_name_in_owner = true
 position = Vector2(-0.000419819, 63)
 rotation = -1.57079
+
+[node name="Shadow" type="Sprite2D" parent="Cross"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 0.580392)
+scale = Vector2(1, 0.992)
+texture = ExtResource("2_mem0q")
 
 [connection signal="body_entered" from="Cross/FirstEntry" to="Cross" method="_on_first_entry_body_entered"]
 [connection signal="body_entered" from="Cross/SecondEntry" to="Cross" method="_on_second_entry_body_entered"]

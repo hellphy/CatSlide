@@ -45,6 +45,7 @@ func _on_first_entry_body_entered(body: Node2D) -> void:
 	%Shadow.visible = false
 	body.global_position = path1.global_position
 	path1.progress_ratio = 0
+	call_deferred("disable_areas",first_entry)
 	call_deferred("disable_areas",second_entry)
 	call_deferred("add_player",body, path1)
 	path_anim(path1, 1)
@@ -56,6 +57,7 @@ func _on_second_entry_body_entered(body: Node2D) -> void:
 	%Shadow.visible = false
 	body.global_position = path2.global_position
 	path2.progress_ratio = 0
+	call_deferred("disable_areas",second_entry)
 	call_deferred("disable_areas",first_entry)
 	call_deferred("add_player",body, path2)
 	path_anim(path2,1)
