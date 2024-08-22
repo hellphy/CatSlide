@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyj6ay34km1ex"]
+
+[ext_resource type="Theme" uid="uid://bth1abf2bspbx" path="res://button_theme.tres" id="1_lcfhy"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.521569, 0.701961, 1)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 239.0
+offset_right = 385.0
+offset_bottom = 361.0
+theme = ExtResource("1_lcfhy")
+text = "start game"

@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bth1abf2bspbx"]
+
+[ext_resource type="StyleBox" uid="uid://b8yljcusfl4ap" path="res://normal_button.tres" id="1_bu7lj"]
+[ext_resource type="StyleBox" uid="uid://0kl3w8dt8php" path="res://hover_button.tres" id="2_1v6mk"]
+
+[resource]
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 46
+Button/styles/focus = ExtResource("1_bu7lj")
+Button/styles/hover = ExtResource("2_1v6mk")
+Button/styles/normal = ExtResource("1_bu7lj")
+Button/styles/pressed = ExtResource("1_bu7lj")

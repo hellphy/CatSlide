@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6ultvqjtm3le"]
+
+[ext_resource type="Texture2D" uid="uid://blbyjne8bf1cn" path="res://exitPiece.png" id="1_jymgp"]
+[ext_resource type="Script" path="res://scripts/finish.gd" id="1_pc58d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44da6"]
+size = Vector2(122, 123)
+
+[node name="FinishPiece" type="Control"]
+custom_minimum_size = Vector2(116, 116)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1030.0
+offset_bottom = -526.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pc58d")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(61, 60)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_44da6")
+
+[node name="ExitPiece" type="Sprite2D" parent="Area2D"]
+position = Vector2(0, 2.5)
+scale = Vector2(1, 1.02459)
+texture = ExtResource("1_jymgp")
+
+[node name="Shadow" type="Sprite2D" parent="Area2D"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 0.564706)
+position = Vector2(0, 2.5)
+scale = Vector2(1, 1.02459)
+texture = ExtResource("1_jymgp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

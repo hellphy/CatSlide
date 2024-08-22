@@ -2,16 +2,30 @@ class_name LevelManager extends Node2D
 
 
 @onready var respawn_point: Node2D = $respawn_point
-@onready var exit: Area2D = $exit
+
+
+var level: Node2D
+
+var levels: Array = [
+	"res://Levels/level_scenes/level_1.tscn",
+	"res://Levels/level_scenes/level_2.tscn",
+	"res://Levels/level_scenes/level_3.tscn",
+	
+	
+]
 
 
 func _ready() -> void:
+	_add_level()
 	Globals.connect("restart", _restart_level)
+	Globals.connect("finish", _finished)
+	
 	_restart_level()
 
 
 func _physics_process(delta: float) -> void:
-	%RichTextLabel.text = str(Globals.level_tiles) + "/" + str(Globals.tile_counter)
+	%RichTextLabel.text = str(Globals.tile_counter) + "/" + str(Globals.level_tiles)
+	%CurrentLevel.text = "level: " + str(Globals.current_level)
 
 
 func _on_button_pressed() -> void:
@@ -40,6 +54,20 @@ func restart() -> void:
 	Globals.emit_signal("restart_areas")
 
 
-func _on_exit_body_entered(body: Node2D) -> void:
+func _finished() -> void:
 	if Globals.tile_counter == Globals.level_tiles:
-			%VictoryScreen.visible = true
+			%CanvasLayer.visible = true
+
+
+func _add_level() -> void:
+	level = load(levels[Globals.current_level - 1]).instantiate()
+	add_child(level)
+
+
+func _on_next_level_button_pressed() -> void:
+	%CanvasLayer.visible = false
+	level.queue_free()
+	Globals.current_level += 1
+	_add_level()
+	_restart_level()
+

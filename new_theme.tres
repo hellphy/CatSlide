@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://3l5lvxkwtv1x"]
+
+[resource]
+PanelContainer/styles/panel = null
+RichTextLabel/font_sizes/normal_font_size = 61
+RichTextLabel/styles/normal = null

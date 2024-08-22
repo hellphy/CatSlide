@@ -12,9 +12,13 @@ var tween: Tween
 
 static var can_click = true
 
+var random_angle = [
+	0, 90, 180, 270
+]
 
 func _ready() -> void:
 	Globals.connect("restart_areas", _restart_areas)
+	rotation_degrees = random_angle.pick_random()
 	
 
 func _restart_areas() -> void:

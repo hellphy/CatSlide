@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm3f1xr8ql5ft"]
+[gd_scene load_steps=9 format=3 uid="uid://cm3f1xr8ql5ft"]
 
 [ext_resource type="Script" path="res://Levels/level_scripts/level_1.gd" id="1_h3b74"]
 [ext_resource type="PackedScene" uid="uid://dkr0n2g0dhdvp" path="res://scenes/straight.tscn" id="2_kd5uc"]
+[ext_resource type="Theme" uid="uid://bkl8bmm4l37vs" path="res://Levels/level_scenes/leveltheme.tres" id="2_klg75"]
 [ext_resource type="PackedScene" uid="uid://dwnetb7oe3e18" path="res://scenes/corner.tscn" id="3_p2ugm"]
+[ext_resource type="StyleBox" uid="uid://cw7gmjmovn5kk" path="res://Levels/level_scenes/levelframe.tres" id="3_yr3sm"]
+[ext_resource type="PackedScene" uid="uid://b6ultvqjtm3le" path="res://scenes/finish.tscn" id="4_4w7of"]
 [ext_resource type="PackedScene" uid="uid://es6crnejn5nm" path="res://scenes/empty.tscn" id="4_60qg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysm4g"]
@@ -11,38 +14,44 @@ size = Vector2(843.25, 28)
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_h3b74")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 423.0
-offset_top = 124.0
-offset_right = 793.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 411.0
+offset_top = 112.0
+offset_right = 797.0
 offset_bottom = 498.0
+mouse_filter = 2
+theme = ExtResource("2_klg75")
+theme_override_styles/panel = ExtResource("3_yr3sm")
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
+layout_mode = 2
 columns = 3
 
-[node name="CornerPiece" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+[node name="CornerPiece" parent="PanelContainer/GridContainer" instance=ExtResource("3_p2ugm")]
 layout_mode = 2
 
-[node name="StraightPiece" parent="GridContainer" instance=ExtResource("2_kd5uc")]
+[node name="StraightPiece" parent="PanelContainer/GridContainer" instance=ExtResource("2_kd5uc")]
 layout_mode = 2
 
-[node name="StraightPiece2" parent="GridContainer" instance=ExtResource("2_kd5uc")]
+[node name="FinishPiece" parent="PanelContainer/GridContainer" instance=ExtResource("4_4w7of")]
 layout_mode = 2
 
-[node name="CornerPiece4" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+[node name="CornerPiece4" parent="PanelContainer/GridContainer" instance=ExtResource("3_p2ugm")]
 layout_mode = 2
 
-[node name="CornerPiece5" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+[node name="CornerPiece5" parent="PanelContainer/GridContainer" instance=ExtResource("3_p2ugm")]
 layout_mode = 2
 
-[node name="EmptyPiece2" parent="GridContainer" instance=ExtResource("4_60qg6")]
+[node name="EmptyPiece2" parent="PanelContainer/GridContainer" instance=ExtResource("4_60qg6")]
 layout_mode = 2
 
-[node name="CornerPiece7" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+[node name="CornerPiece7" parent="PanelContainer/GridContainer" instance=ExtResource("3_p2ugm")]
 layout_mode = 2
 
-[node name="CornerPiece8" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+[node name="CornerPiece8" parent="PanelContainer/GridContainer" instance=ExtResource("3_p2ugm")]
 layout_mode = 2
 
-[node name="EmptyPiece" parent="GridContainer" instance=ExtResource("4_60qg6")]
+[node name="EmptyPiece" parent="PanelContainer/GridContainer" instance=ExtResource("4_60qg6")]
 layout_mode = 2
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
@@ -72,7 +81,3 @@ shape = SubResource("RectangleShape2D_ysm4g")
 unique_name_in_owner = true
 position = Vector2(483, 493)
 rotation = -3.14159
-
-[node name="Exit_pos" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(836, 183)

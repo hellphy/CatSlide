@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bkl8bmm4l37vs"]
+
+[ext_resource type="StyleBox" uid="uid://cw7gmjmovn5kk" path="res://Levels/level_scenes/levelframe.tres" id="1_fh6ei"]
+
+[resource]
+PanelContainer/styles/panel = ExtResource("1_fh6ei")

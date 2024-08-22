@@ -6,5 +6,5 @@ extends Node2D
 
 func _ready() -> void:
 	respawn_point.transform = %Respawn_pos.transform
-	Globals.level_tiles = 7
+	Globals.level_tiles = 18
 
