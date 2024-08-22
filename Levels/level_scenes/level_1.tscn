@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://cm3f1xr8ql5ft"]
+
+[ext_resource type="Script" path="res://Levels/level_scripts/level_1.gd" id="1_h3b74"]
+[ext_resource type="PackedScene" uid="uid://dkr0n2g0dhdvp" path="res://scenes/straight.tscn" id="2_kd5uc"]
+[ext_resource type="PackedScene" uid="uid://dwnetb7oe3e18" path="res://scenes/corner.tscn" id="3_p2ugm"]
+[ext_resource type="PackedScene" uid="uid://es6crnejn5nm" path="res://scenes/empty.tscn" id="4_60qg6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysm4g"]
+size = Vector2(843.25, 28)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_h3b74")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 423.0
+offset_top = 124.0
+offset_right = 793.0
+offset_bottom = 498.0
+columns = 3
+
+[node name="CornerPiece" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+layout_mode = 2
+
+[node name="StraightPiece" parent="GridContainer" instance=ExtResource("2_kd5uc")]
+layout_mode = 2
+
+[node name="StraightPiece2" parent="GridContainer" instance=ExtResource("2_kd5uc")]
+layout_mode = 2
+
+[node name="CornerPiece4" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+layout_mode = 2
+
+[node name="CornerPiece5" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+layout_mode = 2
+
+[node name="EmptyPiece2" parent="GridContainer" instance=ExtResource("4_60qg6")]
+layout_mode = 2
+
+[node name="CornerPiece7" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+layout_mode = 2
+
+[node name="CornerPiece8" parent="GridContainer" instance=ExtResource("3_p2ugm")]
+layout_mode = 2
+
+[node name="EmptyPiece" parent="GridContainer" instance=ExtResource("4_60qg6")]
+layout_mode = 2
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+position = Vector2(479, 497)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(488, 4)
+shape = SubResource("RectangleShape2D_ysm4g")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(321, 173)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_ysm4g")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(239, -388)
+shape = SubResource("RectangleShape2D_ysm4g")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-70, -41)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_ysm4g")
+
+[node name="Respawn_pos" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(483, 493)
+rotation = -3.14159
+
+[node name="Exit_pos" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(836, 183)

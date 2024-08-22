@@ -21,7 +21,7 @@ size = Vector2(36, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8u0q"]
 size = Vector2(121, 122)
 
-[node name="Control" type="Control"]
+[node name="CornerPiece" type="Control"]
 custom_minimum_size = Vector2(116, 116)
 layout_mode = 3
 anchors_preset = 8
@@ -31,8 +31,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -636.0
 offset_top = -385.0
-offset_right = -515.0
-offset_bottom = -264.0
+offset_right = -514.0
+offset_bottom = -263.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(61, 61)
@@ -84,12 +84,10 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_pdcbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_o8u0q")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Area2D"]
-visible = false
 position = Vector2(-59, -58)
 collision_layer = 2
 collision_mask = 0

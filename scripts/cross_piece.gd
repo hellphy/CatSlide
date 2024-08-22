@@ -72,11 +72,12 @@ func reset_click():
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
-	if %shadow.visble == true:
+	if %shadow.visible == true:
 		Globals.tile_counter += 1
+	else:
+		pass
 	%Shadow.visible = false
 	body.global_position = path1.global_position
-	Globals.tile_counter += 1 
 	call_deferred("disable_areas",first_entry)
 	call_deferred("disable_areas",second_entry)
 	call_deferred("add_player",body, path1)
@@ -84,11 +85,12 @@ func _on_first_entry_body_entered(body: Node2D) -> void:
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
-	if %Shadow.visble == true:
+	if %Shadow.visible == true:
 		Globals.tile_counter += 1
+	else:
+		pass
 	%Shadow.visible = false
 	body.global_position = path2.global_position
-	Globals.tile_counter += 1 
 	call_deferred("disable_areas",second_entry)
 	call_deferred("disable_areas",first_entry)
 	call_deferred("add_player",body, path2)
@@ -96,8 +98,10 @@ func _on_second_entry_body_entered(body: Node2D) -> void:
 
 
 func _on_third_entry_body_entered(body: Node2D) -> void:
-	if %Shadow.visble == true:
+	if %Shadow.visible == true:
 		Globals.tile_counter += 1
+	else:
+		pass
 	%Shadow.visible = false
 	body.global_position = path3.global_position
 	call_deferred("disable_areas",third_entry)
@@ -109,6 +113,8 @@ func _on_third_entry_body_entered(body: Node2D) -> void:
 func _on_fourth_entry_body_entered(body: Node2D) -> void:
 	if %Shadow.visible == true:
 		Globals.tile_counter += 1
+	else:
+		pass
 	%Shadow.visible = false
 	body.global_position = path4.global_position
 	call_deferred("disable_areas",fourth_entry)

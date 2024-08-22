@@ -40,7 +40,6 @@ func add_player(body: Node2D, path: Node2D) -> void:
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
-	print("entered1")
 	Globals.tile_counter += 1 
 	%Shadow.visible = false
 	body.global_position = path1.global_position
@@ -52,7 +51,6 @@ func _on_first_entry_body_entered(body: Node2D) -> void:
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
-	print("entered2")
 	Globals.tile_counter += 1 
 	%Shadow.visible = false
 	body.global_position = path2.global_position
