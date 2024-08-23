@@ -21,6 +21,7 @@ func _ready() -> void:
 
 
 func _restart_areas() -> void:
+	TileSound.pitch_scale = 0.25
 	%Shadow.visible = true
 	if tween != null:
 		tween.kill()
@@ -72,7 +73,9 @@ func reset_click():
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
-	if %shadow.visible == true:
+	TileSound.pitch_scale += 0.02
+	TileSound.play()
+	if %Shadow.visible == true:
 		Globals.tile_counter += 1
 	else:
 		pass
@@ -85,6 +88,8 @@ func _on_first_entry_body_entered(body: Node2D) -> void:
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
+	TileSound.pitch_scale += 0.02
+	TileSound.play()
 	if %Shadow.visible == true:
 		Globals.tile_counter += 1
 	else:
@@ -98,6 +103,8 @@ func _on_second_entry_body_entered(body: Node2D) -> void:
 
 
 func _on_third_entry_body_entered(body: Node2D) -> void:
+	TileSound.pitch_scale += 0.02
+	TileSound.play()
 	if %Shadow.visible == true:
 		Globals.tile_counter += 1
 	else:
@@ -111,6 +118,8 @@ func _on_third_entry_body_entered(body: Node2D) -> void:
 
 
 func _on_fourth_entry_body_entered(body: Node2D) -> void:
+	TileSound.pitch_scale += 0.02
+	TileSound.play()
 	if %Shadow.visible == true:
 		Globals.tile_counter += 1
 	else:

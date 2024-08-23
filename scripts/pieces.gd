@@ -22,6 +22,7 @@ func _ready() -> void:
 	
 
 func _restart_areas() -> void:
+	TileSound.pitch_scale = 0.25
 	%Shadow.visible = true
 	if tween != null:
 		tween.kill()
@@ -44,6 +45,8 @@ func add_player(body: Node2D, path: Node2D) -> void:
 
 
 func _on_first_entry_body_entered(body: Node2D) -> void:
+	TileSound.pitch_scale += 0.02
+	TileSound.play()
 	Globals.tile_counter += 1 
 	%Shadow.visible = false
 	body.global_position = path1.global_position
@@ -55,6 +58,8 @@ func _on_first_entry_body_entered(body: Node2D) -> void:
 
 
 func _on_second_entry_body_entered(body: Node2D) -> void:
+	TileSound.pitch_scale += 0.02
+	TileSound.play()
 	Globals.tile_counter += 1 
 	%Shadow.visible = false
 	body.global_position = path2.global_position
@@ -78,6 +83,7 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void
 	)
 	
 	if event_is_mouse_click and can_click:
+		Audio.play(0.46)
 		var rotation_tween := create_tween()
 		var desired_rotation = rotation_degrees + 90
 		rotation_tween.tween_property(self,"rotation_degrees", desired_rotation, 0.3)

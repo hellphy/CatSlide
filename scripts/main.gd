@@ -10,12 +10,20 @@ var levels: Array = [
 	"res://Levels/level_scenes/level_1.tscn",
 	"res://Levels/level_scenes/level_2.tscn",
 	"res://Levels/level_scenes/level_3.tscn",
+	"res://Levels/level_scenes/level_4.tscn",
+	"res://Levels/level_scenes/level_5.tscn",
+	"res://Levels/level_scenes/level_6.tscn",
+	"res://Levels/level_scenes/level_7.tscn",
+	"res://Levels/level_scenes/level_8.tscn",
+	
 	
 	
 ]
 
 
 func _ready() -> void:
+	print(levels.size())
+	print(Globals.current_level)
 	_add_level()
 	Globals.connect("restart", _restart_level)
 	Globals.connect("finish", _finished)
@@ -65,9 +73,13 @@ func _add_level() -> void:
 
 
 func _on_next_level_button_pressed() -> void:
-	%CanvasLayer.visible = false
-	level.queue_free()
-	Globals.current_level += 1
-	_add_level()
-	_restart_level()
+	if Globals.current_level >= levels.size():
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		Globals.current_level = 1
+	else:
+		%CanvasLayer.visible = false
+		level.queue_free()
+		Globals.current_level += 1
+		_add_level()
+		_restart_level()
 

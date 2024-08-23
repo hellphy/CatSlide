@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyj6ay34km1ex"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_3gnab"]
+[ext_resource type="Texture2D" uid="uid://bngv6480ktqdk" path="res://CatSpriteSheet.png" id="2_he5ve"]
+[ext_resource type="Theme" uid="uid://bth1abf2bspbx" path="res://button_theme.tres" id="3_dxqh3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0x4g"]
+atlas = ExtResource("2_he5ve")
+region = Rect2(0, 0, 451, 497)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmv63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0x4g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3gnab")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.521569, 0.701961, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(760, 334)
+scale = Vector2(1.13525, 1.13526)
+sprite_frames = SubResource("SpriteFrames_pmv63")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 269.0
+offset_right = 353.0
+offset_bottom = 391.0
+theme = ExtResource("3_dxqh3")
+text = "start game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

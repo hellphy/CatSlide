@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq0kck3b8mg5h"]
+
+[ext_resource type="AudioStream" uid="uid://bc218oi7k2sf3" path="res://sound/package sliding 1.wav" id="1_jctkv"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_jctkv")

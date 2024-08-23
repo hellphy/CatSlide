@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqa8hbqnigyek"]
+
+[ext_resource type="AudioStream" uid="uid://dilivovvov6uo" path="res://sound/click-game-menu-147356.mp3" id="1_q1w3t"]
+
+[node name="tile_sound" type="AudioStreamPlayer"]
+stream = ExtResource("1_q1w3t")
+pitch_scale = 0.2

@@ -15,10 +15,10 @@ size = Vector2(843.25, 28)
 script = ExtResource("1_h3b74")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 411.0
-offset_top = 112.0
-offset_right = 797.0
-offset_bottom = 498.0
+offset_left = 415.0
+offset_top = 114.0
+offset_right = 801.0
+offset_bottom = 500.0
 mouse_filter = 2
 theme = ExtResource("2_klg75")
 theme_override_styles/panel = ExtResource("3_yr3sm")

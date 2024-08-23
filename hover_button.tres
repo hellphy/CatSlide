@@ -1,14 +1,10 @@
 [gd_resource type="StyleBoxFlat" format=3 uid="uid://0kl3w8dt8php"]
 
 [resource]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 15
-border_width_top = 15
-border_width_right = 15
+bg_color = Color(0.290196, 0.298039, 0.701961, 1)
 border_width_bottom = 15
-border_color = Color(0.282353, 0.345098, 0.858824, 1)
-border_blend = true
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+border_color = Color(0.117647, 0.211765, 0.568627, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
